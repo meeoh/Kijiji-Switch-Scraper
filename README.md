@@ -6,5 +6,7 @@ Scrapes kijiji using `kijijiji-scraper` then messages to your desginated telegra
 ## Installation
 `npm i`
 
+Create a .env file with keys `TELEGRAM_TOKEN` and `CHAT_ID`
+
 ## Usage
 `node main.js`
