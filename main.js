@@ -21,6 +21,8 @@ var params = {
     adType: "OFFER"
 };
 
+var delay = 1800000
+
 function getData() {
     var finished = 0;
     var locationKeys = Object.keys(LOCATIONS);
@@ -62,7 +64,7 @@ function getData() {
                 console.log(
                     "Done scraping for all cities, sleeping for 10 mins"
                 );
-                setTimeout(getData, 600000);
+                setTimeout(getData, delay);
             }
         });
     });
