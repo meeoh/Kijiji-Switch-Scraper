@@ -22,17 +22,24 @@ var params = {
 };
 
 function getData() {
-    Object.keys(LOCATIONS).forEach(currentLocation => {
+    var finished = 0;
+    var locationKeys = Object.keys(LOCATIONS);
+
+    locationKeys.forEach(currentLocation => {
         var prefs = {
             categoryId: 625,
             locationId: LOCATIONS[currentLocation]
         };
 
+        console.log("Querying", currentLocation);
+
         kijiji.query(prefs, params, (err, ads) => {
             if (err) {
-                console.warn("Error getting add: ", err);
+                console.log("Error getting add: ", err);
                 return;
             }
+
+            finished += 1;
 
             var todaysDate = moment();
             ads.forEach(ad => {
@@ -50,9 +57,15 @@ function getData() {
                     bot.sendMessage(chatId, message);
                 }
             });
+            console.log(`Done scraping for ${currentLocation}`);
+            if (finished == locationKeys.length) {
+                console.log(
+                    "Done scraping for all cities, sleeping for 10 mins"
+                );
+                setTimeout(getData, 600000);
+            }
         });
     });
-    setTimeout(getData, 600000);
 }
 
 getData();
