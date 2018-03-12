@@ -1,0 +1,25 @@
+{
+  "name": "kijiji-switch-scraper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/meeoh/Kijiji-Switch-Scraper.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/meeoh/Kijiji-Switch-Scraper/issues"
+  },
+  "homepage": "https://github.com/meeoh/Kijiji-Switch-Scraper#readme",
+  "dependencies": {
+    "dotenv": "^5.0.1",
+    "kijiji-scraper": "^2.1.0",
+    "moment": "^2.21.0",
+    "node-telegram-bot-api": "^0.30.0"
+  }
+}
