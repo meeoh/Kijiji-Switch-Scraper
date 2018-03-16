@@ -9,19 +9,16 @@ const bot = new TelegramBot(token, { polling: false });
 const chatId = process.env.CHAT_ID;
 
 var LOCATIONS = {
-    kitchener: 1700209,
-    guelph: 1700242,
-    toronto: 1700272
+    kitchener: 1700209
 };
 
 var params = {
     minPrice: 300,
     maxPrice: 500,
-    keywords: "nintendo+switch",
     adType: "OFFER"
 };
 
-var delay = 1800000
+var delay = 1800000;
 
 function getData() {
     var finished = 0;
@@ -45,10 +42,11 @@ function getData() {
 
             var todaysDate = moment();
             ads.forEach(ad => {
-                var timeDifference = moment
-                    .duration(todaysDate.diff(moment(ad.pubDate)))
-                    .asMinutes();
-                if (timeDifference < 10) {
+                var timeDifference = todaysDate.diff(
+                    moment(ad.pubDate), 'minutes'
+                );
+                // console.log("time difference:", timeDifference);
+                if (timeDifference < delay / 60000) {
                     var message = `Picked up an ad that was posted at ${moment(
                         ad.pubDate
                     ).format(
@@ -56,7 +54,7 @@ function getData() {
                     )} (${timeDifference} minutes ago) in ${currentLocation}.\nThe ads title is: ${
                         ad.title
                     } and its price is: ${ad.innerAd.info.Price}.\n${ad.link}`;
-                    bot.sendMessage(chatId, message);
+                    // bot.sendMessage(chatId, message);
                 }
             });
             console.log(`Done scraping for ${currentLocation}`);

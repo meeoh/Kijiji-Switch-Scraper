@@ -20,6 +20,7 @@
     "dotenv": "^5.0.1",
     "kijiji-scraper": "^2.1.0",
     "moment": "^2.21.0",
+    "moment-timezone": "^0.5.14",
     "node-telegram-bot-api": "^0.30.0"
   }
 }
